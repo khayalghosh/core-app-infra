@@ -1,0 +1,38 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+crash.log
+.terraform/
+.terraform.lock.hcl
+
+# Sensitive files
+*.pem
+*.key
+*.crt
+*.env
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Next.js build
+.next/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Python virtualenv
+consultingenv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Misc
+*.swp
+*.swo
