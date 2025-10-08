@@ -36,7 +36,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = var.address_space
   ddos_protection_plan {
     id     = var.ddos_protection_plan_id
-    enable = true
+    enable = false
   }
   tags = merge(var.tags, { "created_by" = "khayal", "type" = "virtual_network" })
 }
