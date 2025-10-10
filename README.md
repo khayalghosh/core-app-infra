@@ -1,1 +1,2 @@
-Inidital readme
+initial readme
+
