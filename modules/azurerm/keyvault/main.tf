@@ -31,5 +31,5 @@ resource "azurerm_key_vault" "keyvault" {
     bypass                     = "AzureServices"
     virtual_network_subnet_ids = var.virtual_network_subnet_ids
   }
-  tags = merge(var.tags, { "created_by" = "dep_terraform", "type" = "keyvault", "DatadogLogs" = "true", "DatadogMetrics" = "true" })
+  tags = [var.tags]
 }
