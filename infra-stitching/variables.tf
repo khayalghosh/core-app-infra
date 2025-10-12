@@ -11,6 +11,20 @@ variable "environment" {
   default     = "dev"
 }
 
+variable "project" {
+  description = "The name of the project or application."
+  type        = string
+  default     = "myapp"
+  
+}
+
+variable "cloud_code" {
+  description = "A short code representing the cloud provider, e.g., 'az' for Azure."
+  type        = string
+  default     = "az"
+  
+}
+
 ## Virtual Network and Subnet Variables
 variable "vnet_address_space" {
     description = "The address space to use for the virtual network."
