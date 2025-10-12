@@ -1,8 +1,8 @@
 module "naming" {
   source  = "Azure/naming/azurerm"
   version = "~> 0.3"
-  prefix  = local.first_prefix
-  suffix  = local.second_prefix
+  prefix  = [local.first_prefix]
+  suffix  = [local.second_prefix]
 }
 
 locals {

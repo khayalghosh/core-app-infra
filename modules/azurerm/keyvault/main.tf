@@ -1,31 +1,6 @@
 
 data "azurerm_client_config" "current" {}
 
-resource "azurerm_monitor_diagnostic_setting" "monitor_diagnostic_setting" {
-  name                       = "${var.name}-mds"
-  target_resource_id         = azurerm_key_vault.keyvault.id
-  storage_account_id         = var.storage_account_id
-  log_analytics_workspace_id = var.log_analytics_workspace_id
-  partner_solution_id        = var.partner_solution_id
-
-  enabled_log {
-    category = var.enabled_log_category
-
-    retention_policy {
-      enabled = var.enabled_log_retention_policy
-    }
-  }
-
-  metric {
-    category = var.metric_category
-
-    retention_policy {
-      enabled = var.metric_retention_policy
-    }
-  }
-}
-
-
 resource "azurerm_key_vault" "keyvault" {
   name                          = var.name
   resource_group_name           = var.resource_group_name
