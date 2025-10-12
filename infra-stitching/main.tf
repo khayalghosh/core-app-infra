@@ -44,5 +44,5 @@ module "key_vault" {
   location            = module.resource_group.location
   tags                = var.tags
   purge_protection_enabled = false
-  sku_name                 = "standard"
+  sku_name                 = local.keyvault_sku
 }
