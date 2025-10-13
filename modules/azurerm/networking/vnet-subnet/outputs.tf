@@ -5,10 +5,10 @@ output "vnet_id" {
 
 output "subnet_id" {
   description = "The ID of the AKS subnet."
-  value       = azurerm_subnet.aks.id
+  value       = azurerm_subnet.aks_subnet.id
 }
 
 output "subnet_name" {
   description = "The name of the AKS subnet."
-  value       = azurerm_subnet.aks.name
+  value       = azurerm_subnet.aks_subnet.name
 }

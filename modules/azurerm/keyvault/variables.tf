@@ -35,7 +35,7 @@ variable "soft_delete_retention_days" {
   nullable    = false
   type        = number
   description = "Soft delete retention days for keyvault"
-  default = 0
+  default = 7
 }
 
 variable "purge_protection_enabled" {
@@ -46,7 +46,7 @@ variable "purge_protection_enabled" {
 
 variable "tags" {
   nullable    = false
-  type        = map(any)
+  type        = map(string)
   description = "The tags that are to be applied to the resource."
 }
 

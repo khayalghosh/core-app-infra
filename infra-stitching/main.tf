@@ -9,19 +9,22 @@ terraform {
   required_version = ">= 0.14.9"
 }
 
+provider "azurerm" {
+features {}
+}
 
 module "name_generator" {
   source = "../modules/helpers/name_generator"
-  cloud_code = var.cloudcode
+  cloud_code = var.cloud_code
   environment = var.environment
   project = var.project
 }
 
 module "resource_group" {
-  source              = "../modules/resource_group"
-  resource_group_name = module.name_generator.resource_group_name
+  source              = "../modules/azurerm/resource_group"
+  name = module.name_generator.resource_group_name
   location            = var.location
-  
+  tags                = var.tags
 }
 
 module "virtual_subnet_network" {
@@ -29,7 +32,7 @@ module "virtual_subnet_network" {
   source               = "../modules/azurerm/networking/vnet-subnet"
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.location
-  vnet_name            = module.name_generator.vnet_name
+  vnet_name            = module.name_generator.virtual_network_name
   vnet_address_space   = var.vnet_address_space
   subnet_name          = module.name_generator.subnet_name
   subnet_address_prefixes = var.subnet_address_prefixes
@@ -39,10 +42,21 @@ module "virtual_subnet_network" {
 module "key_vault" {
   depends_on = [ module.resource_group ]
   source              = "../modules/azurerm/keyvault"
-  name      = module.name_generator.keyvault_name
+  name      = module.name_generator.key_vault_name
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.location
   tags                = var.tags
   purge_protection_enabled = false
-  sku_name                 = "standard"
+  sku_name                 = local.keyvault_sku
 }
+
+module "container_registry" {
+  depends_on = [ module.resource_group ]
+  source              = "../modules/azurerm/container_registry"
+  name                = module.name_generator.container_registry_name
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.location
+  sku                 = local.container_registry_sku
+  tags                = var.tags
+}
+

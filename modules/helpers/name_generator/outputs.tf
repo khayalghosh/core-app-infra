@@ -27,7 +27,7 @@ output "subnet_name" {
   value       = module.naming.subnet.name
 }
 
-output "keyvault_name" {
-  description = "output of keyvault_name"
-  value       = module.naming.keyvault.name
+output "key_vault_name" {
+  description = "output of key_vault_name"
+  value       = module.naming.key_vault.name
 }

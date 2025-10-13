@@ -11,6 +11,20 @@ variable "environment" {
   default     = "dev"
 }
 
+variable "project" {
+  description = "The name of the project or application."
+  type        = string
+  default     = "myapp"
+  
+}
+
+variable "cloud_code" {
+  description = "A short code representing the cloud provider, e.g., 'az' for Azure."
+  type        = string
+  default     = "az"
+  
+}
+
 ## Virtual Network and Subnet Variables
 variable "vnet_address_space" {
     description = "The address space to use for the virtual network."
@@ -29,4 +43,12 @@ variable "location" {
   description = "The Azure region where resources will be deployed."
   type        = string
   default     = "East US"
+}
+
+
+# Container Registry Variables
+variable "container_registry_sku" {
+  description = "The SKU of the Azure Container Registry."
+  type        = string
+  default     = "Basic"
 }
