@@ -60,3 +60,16 @@ module "container_registry" {
   tags                = var.tags
 }
 
+module "aks" {
+  depends_on = [ module.resource_group, module.virtual_subnet_network ]
+  source              = "../modules/azurerm/kubernetes/aks"
+  name                = module.name_generator.aks_name
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.location
+  dns_prefix          = module.name_generator.aks_dns_prefix
+  node_count          = local.aks_node_count
+  node_vm_size        = local.aks_node_vm_size
+  subnet_id           = module.virtual_subnet_network.subnet_id
+  tags                = var.tags
+}
+
