@@ -9,9 +9,9 @@
 #   }
 # }
 
-provider "azurerm" {
-  features {}
-}
+# provider "azurerm" {
+#   features {}
+# }
 
 # Create Azure Container Registry
 resource "azurerm_container_registry" "acr" {
@@ -20,6 +20,5 @@ resource "azurerm_container_registry" "acr" {
   location            = var.location
   sku                 = var.sku
   admin_enabled       = var.admin_enabled
-
-  tags = var.tags
+  tags                = var.tags
 }

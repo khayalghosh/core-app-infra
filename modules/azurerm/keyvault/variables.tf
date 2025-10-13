@@ -46,7 +46,7 @@ variable "purge_protection_enabled" {
 
 variable "tags" {
   nullable    = false
-  type        = map(any)
+  type        = map(string)
   description = "The tags that are to be applied to the resource."
 }
 

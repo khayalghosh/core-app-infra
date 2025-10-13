@@ -6,6 +6,6 @@ module "naming" {
 }
 
 locals {
-  first_prefix = format("%s-%s", var.cloud_code, var.environment)
+  first_prefix = format("%s%s", var.cloud_code, var.environment)
   second_prefix = format("%s", var.project)
 }

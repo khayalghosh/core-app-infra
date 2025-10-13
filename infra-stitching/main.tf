@@ -59,3 +59,4 @@ module "container_registry" {
   sku                 = local.container_registry_sku
   tags                = var.tags
 }
+
