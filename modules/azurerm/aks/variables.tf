@@ -1,3 +1,12 @@
+variable "resource_group_name" {
+  type        = string
+  description = "Name of the existing resource group."
+}
+
+variable "subnet_id" {
+  type        = string
+  description = "ID of the existing subnet to attach the AKS cluster."
+}
 variable "resource_group_location" {
   type        = string
   default     = "eastus"
@@ -16,8 +25,7 @@ variable "node_count" {
   default     = 3
 }
 
-variable "username" {
+variable "name" {
   type        = string
-  description = "The admin username for the new cluster."
-  default     = "azureadmin"
+  description = "The name of the AKS cluster."
 }
