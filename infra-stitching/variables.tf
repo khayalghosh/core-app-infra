@@ -44,3 +44,11 @@ variable "location" {
   type        = string
   default     = "East US"
 }
+
+
+# Container Registry Variables
+variable "container_registry_sku" {
+  description = "The SKU of the Azure Container Registry."
+  type        = string
+  default     = "Basic"
+}

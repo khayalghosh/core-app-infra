@@ -9,7 +9,7 @@ variable "location" {
   default     = "East US"
 }
 
-variable "acr_name" {
+variable "name" {
   description = "Unique name for the Azure Container Registry"
   type        = string
 }
@@ -30,4 +30,11 @@ variable "environment" {
   description = "Environment name for tagging"
   type        = string
   default     = "dev"
+}
+
+variable "tags" {
+  description = "A map of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
+  
 }

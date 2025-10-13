@@ -49,3 +49,13 @@ module "key_vault" {
   purge_protection_enabled = false
   sku_name                 = local.keyvault_sku
 }
+
+module "container_registry" {
+  depends_on = [ module.resource_group ]
+  source              = "../modules/azurerm/container_registry"
+  name                = module.name_generator.container_registry_name
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.location
+  sku                 = local.container_registry_sku
+  tags                = var.tags
+}
